@@ -1,0 +1,54 @@
+@value red, green, blue, gray from "./colors.css";
+@value hover from "./utils.css";
+
+/* DEFAULT */
+.normal {
+  composes: hover;
+
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: gray;
+  background-color: gray;
+}
+
+.normal + .normal {
+  margin-left: 8px;
+}
+
+.small {
+  padding: 2px 5px;
+  font-size: 12px;
+}
+
+/* VARIANTS */
+.primary {
+  composes: normal;
+
+  border-color: blue from "./colors.css";
+  background-color: blue;
+  color: white;
+}
+
+.danger {
+  composes: normal;
+
+  border-color: red;
+  background-color: red;
+  color: white;
+}
+
+.outline {
+  composes: normal;
+
+  border-color: gray;
+  background-color: white;
+}
+
+.outlinePrimary {
+  composes: normal outline;
+
+  color: blue;
+  border-color: blue;
+}

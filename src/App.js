@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import cn from "classnames";
+
+import "./global.module.css";
+import buttonStyle from "./Button.module.css";
 
 function App() {
+  const [smallButton, setSmallButton] = useState(false);
+
+  // Class decision
+  const primaryClasses = cn(buttonStyle.primary, {
+    [buttonStyle.small]: smallButton,
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Buttons</h1>
+
+      <button className={buttonStyle.normal}>Normal</button>
+      <button
+        className={primaryClasses}
+        onClick={() => setSmallButton(!smallButton)}
+      >
+        Primary
+      </button>
+      <button className={buttonStyle.danger}>Danger</button>
+      <button className={buttonStyle.outline}>Outline</button>
+      <button className={buttonStyle.outlinePrimary}>Primary Outline</button>
+    </>
   );
 }
 
